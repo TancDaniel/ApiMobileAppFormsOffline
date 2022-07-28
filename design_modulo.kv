@@ -1,0 +1,385 @@
+#:import utils kivy.utils
+#:import Factory kivy.factory.Factory
+
+<sp@SpinnerOption>:
+    color: utils.get_color_from_hex('#FFFFFF')
+	height: '60dp'
+	background_color:utils.get_color_from_hex('#1a2232')
+	font_name: 'data/font/ChakraPetch-Bold.ttf'
+<MyDropDown@DropDown>:
+    max_height: '250dp'
+
+
+WindowManager:
+    Pag1:
+        id: pag1
+        name : 'pag1'
+    Pag2:
+        id: pag2
+        name : 'pag2'
+    Pag3:
+        id: pag3
+        name : 'pag3'
+
+<Pag1>:
+	id:pag1
+	name:"pag1"
+	Screen:
+	
+
+		orientation: "vertical"
+
+
+		MDLabel:
+			id: welcome_label
+			markup: True
+			text: "[color=#0d6efd]Wel[/color][color=FFFFFF]come[/color]"
+			font_name: 'data/font/RussoOne-Regular.ttf'
+
+			font_size: '40sp'
+			halign: "center"
+			size_hint_y: None
+			padding_y: '50dp'
+			pos_hint: {"center_x": 0.5, "center_y": 0.82}
+		MDTextField:
+			id: user
+			write_tab: False
+			mode:"rectangle"
+			multiline: False
+			text: ''
+
+			color_mode: 'custom'
+			line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+			icon_right: "account"
+
+			size_hint: (.7, None)
+			
+			
+			icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+			pos_hint: {"center_x": 0.5, "center_y": 0.6}
+		MDTextField:
+			id: password
+			password: True
+			write_tab: False
+			hint_text: "Password          "
+
+			mode:"rectangle"
+			multiline: False
+
+			color_mode: 'custom'
+			line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+			icon_right: "eye-off"
+
+			size_hint: (.7, None)
+			
+			
+			icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+			pos_hint: {"center_x": 0.5, "center_y": 0.5}
+
+		MDSwitch:
+			id: lock_state
+			size_hint: None, None
+			size: "48dp", "28dp"
+			pos_hint: {'center_x': .5, 'center_y': .4}
+    		on_active: root.on_checkbox_active(*args)
+
+		MDRectangleFlatButton:
+			text: "Log In"
+			line_color: utils.get_color_from_hex('##0d6efd')
+			on_press: root.submit()
+			pos_hint: {"center_x": 0.5, "center_y": 0.3}
+			theme_icon_color: "Custom"
+			icon_color: 1, 0, 0, 1
+		MDLabel:
+			text: "Modulo"
+			font_size: '18dp'
+			font_name: 'data/font/Bungee-Regular.ttf'
+			halign: "center"
+			markup: True
+			text: "[color=FFFFFF]Mod[/color][color=#0d6efd]ulo[/color]"
+			pos_hint: {"center_x": 0.5, "center_y": 0.10}
+#		Image:
+#			id: box
+#			size_hint_x: 0.2
+#			allow_stretch: True
+#			source: './images/furniture.png'
+#			pos_hint: {"center_x": 0.35, "center_y": 0.10}
+<Pag2>:
+	id:pag2
+	name:"pag2"
+
+	BoxLayout:
+		orientation: "vertical"
+		
+		MDToolbar:
+			id: mdtool
+			markup: True
+			title: "Modulo Preposti Torino"
+			anchor_title: "center"
+			md_bg_color: utils.get_color_from_hex('#191919')
+#------------------------------------------------------------------
+		MDBottomNavigation:
+			#colors
+    		text_color_active: utils.get_color_from_hex('##0d6efd')
+			MDBottomNavigationItem:
+				name: "screen1"
+				text: "Form"
+				icon: "receipt"
+				orientation: "vertical"
+
+				MDTextField:
+					id: eq_id
+					write_tab: False
+					hint_text: "EQ          "
+					mode:"rectangle"
+					multiline: False
+
+					color_mode: 'custom'
+    				line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+					icon_right: "account-circle"
+
+					size_hint: (.7, None)
+					
+					max_height: '100sp'
+					
+					icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+					pos_hint: {"center_x": 0.5, "center_y": 0.92}
+				MDTextField:
+					id: buono_id
+					write_tab: False
+					hint_text: "Buono         "
+					mode:"rectangle"
+					multiline: False
+
+					color_mode: 'custom'
+    				line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+					icon_right: "store"
+
+					size_hint: (.7, None)
+					
+					max_height: '100sp'
+					
+					icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+					pos_hint: {"center_x": 0.5, "center_y": 0.80}
+
+
+				Spinner:
+					id: tipologia_id
+
+					size_hint: None, None
+					size: '290dp', '30dp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.68}
+					values: ['Camera','Cameretta','Cucina','Soggiorni','Bagno','Tavolo','Madie','Divano','Sedie','Letto','Scarpiere','Elettrodomestici','Illuminazione','Revisioni']
+
+					font_name: 'data/font/ChakraPetch-Bold.ttf'
+					text: 'Scegli [color=#0d6efd]Tipologia merce[/color]'
+					markup: True
+
+
+					background_color:utils.get_color_from_hex('#9B9595')
+
+					option_cls:Factory.sp
+            		dropdown_cls: 'MyDropDown'
+				Spinner:
+					id: graffiato_id
+					size_hint: None, None
+					size: '290dp', '30dp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.605}
+					values: ['Graffiato/Rigato','Ammaccato/Sbeccato','Rotto','Mancante','Mal Verniciato','Mal Rifinito','Mal Incollato','Errato','Strappato']
+
+					font_name: 'data/font/ChakraPetch-Bold.ttf'
+					text: 'Scegli [color=#0d6efd]Graffiato/Rigato[/color]'
+					markup: True
+
+					option_cls:Factory.sp
+            		dropdown_cls: 'MyDropDown'
+					background_color:utils.get_color_from_hex('#9B9595')
+
+				Spinner:
+					id: intervento_id
+					size_hint: None, None
+					size: '290dp', '30dp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.53}
+
+					font_name: 'data/font/ChakraPetch-Bold.ttf'
+					text: 'Select [color=#0d6efd]Intervento[/color]'
+					markup: True
+					
+					values: ['Annullato','Parziale','Sostituito','ZG']
+
+
+            		dropdown_cls: 'MyDropDown'
+					option_cls:Factory.sp
+
+					background_color:utils.get_color_from_hex('#9B9595')
+
+
+
+
+
+
+
+				MDTextField:
+					id: note_id
+					write_tab: False
+					hint_text: "Note         "
+					mode:"rectangle"
+					multiline: True
+
+					color_mode: 'custom'
+    				line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+					icon_right: "comment-text"
+
+					size_hint: (.7, None)
+					
+					max_height: '100sp'
+					
+					icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+					pos_hint: {"center_x": 0.5, "center_y": 0.38}
+				MDLabel:
+					id: error_label_infos
+					markup: True
+					opacity: 0
+					text: "[color=#0d6efd]Valori di[/color][color=ff0000] errore![/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					halign: "center"
+					font_size: '15sp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.235}
+				MDIconButton:
+					id: api_send_infos
+					icon: "file-plus"
+					pos_hint: {"center_x": .5, "center_y": 0.15}
+					user_font_size: '40dp'
+					on_press: root.api_request()
+				MDLabel:
+					text: "Invia Form"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					halign: "center"
+					font_size: '10sp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.10}
+#-------------------------------------------------------------------------
+
+			MDBottomNavigationItem:
+				name: "screen2"
+				text: "Stato"
+				icon: "refresh"
+
+				MDIconButton:
+					id: refresh_id_page0
+					icon: "images\delivered.png"
+					pos_hint: {"center_x": .5, "center_y": 0.75}
+					icon_size: "100sp"
+				MDIconButton:
+					id: refresh_id_page
+					icon: "check"
+					pos_hint: {"center_x": .45, "center_y": 0.5}
+					icon_size: "100sp"
+				MDIconButton:
+					id: refresh_id_page2
+					icon: "wifi"
+					pos_hint: {"center_x": .55, "center_y": 0.5}
+					icon_size: "100sp"
+				MDIconButton:
+					id: refresh_id_page3
+					opacity: 0
+					disabled: True
+					icon: "images\database_error.png"
+					pos_hint: {"center_x": .50, "center_y": 0.15}
+					icon_size: "100sp"
+				MDLabel:
+					id: infos_status
+					markup: True
+					text: "[color=#0d6efd]Dati inviati con [/color][color=#32CD32]successo![/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					halign: "center"
+					font_size: '15sp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.35}
+
+			MDBottomNavigationItem:
+				name: "screen3"
+				text: "Profilo"
+				icon: "account-circle"
+
+				MDLabel:
+					id: profil_id_profilo
+					markup: True
+					text: ""
+					font_name: 'data/font/Abel-Regular.ttf'
+
+					font_size: '20sp'
+					halign: "center"
+					size_hint_y: None
+					padding_y: '50dp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.85}
+				MDIconButton:
+					icon: "account"
+					pos_hint: {"center_x": .30, "center_y": 0.85}
+
+
+
+
+				MDLabel:
+					id: deposit_id_profilo
+					markup: True
+					text: ""
+					font_name: 'data/font/Abel-Regular.ttf'
+
+					font_size: '20sp'
+					halign: "center"
+					size_hint_y: None
+					padding_y: '50dp'
+					pos_hint: {"center_x": 0.5, "center_y": 0.70}
+				MDIconButton:
+					icon: "store"
+					pos_hint: {"center_x": .30, "center_y": 0.70}
+
+				MDLabel:
+					id: forms_number_profilo
+					markup: True
+					text: ""
+					font_name: 'data/font/Abel-Regular.ttf'
+
+					font_size: '20sp'
+					halign: "center"
+					size_hint_y: None
+					padding_y: '50dp'
+					pos_hint: {"center_x": 0.58, "center_y": 0.50}
+				MDIconButton:
+					icon: "wifi-off"
+					pos_hint: {"center_x": .30, "center_y": 0.50}
+
+				MDLabel:
+					id: forms_number_delivered_profilo
+					markup: True
+					text: ""
+					font_name: 'data/font/Abel-Regular.ttf'
+
+					font_size: '20sp'
+					halign: "center"
+					size_hint_y: None
+					padding_y: '50dp'
+					pos_hint: {"center_x": 0.55, "center_y": 0.30}
+				MDIconButton:
+					icon: "wifi"
+					pos_hint: {"center_x": .30, "center_y": 0.30}
+
+				MDRectangleFlatButton:
+					text: "Log Out"
+					line_color: utils.get_color_from_hex('##0d6efd')
+					on_press: root.log_out()
+					pos_hint: {"center_x": 0.5, "center_y": 0.15}
+
+<Pag3>:
+	id:pag3
+	name:"pag3"
+
