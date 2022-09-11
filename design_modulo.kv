@@ -8,6 +8,11 @@
 	font_name: 'data/font/ChakraPetch-Bold.ttf'
 <MyDropDown@DropDown>:
     max_height: '250dp'
+<TwoLineListItem>:
+
+    IconLeftWidget:
+        icon: root.icon
+
 
 
 WindowManager:
@@ -95,19 +100,14 @@ WindowManager:
 			theme_icon_color: "Custom"
 			icon_color: 1, 0, 0, 1
 		MDLabel:
-			text: "Modulo"
 			font_size: '18dp'
 			font_name: 'data/font/Bungee-Regular.ttf'
 			halign: "center"
 			markup: True
-			text: "[color=FFFFFF]Mod[/color][color=#0d6efd]ulo[/color]"
-			pos_hint: {"center_x": 0.5, "center_y": 0.10}
-#		Image:
-#			id: box
-#			size_hint_x: 0.2
-#			allow_stretch: True
-#			source: './images/furniture.png'
-#			pos_hint: {"center_x": 0.35, "center_y": 0.10}
+			text: "[color=FFFFFF]Mod[/color][color=#0d6efd]ulo[/color][color=FFFFFF] - Pre[/color][color=#0d6efd]posti[/color]"
+			pos_hint: {"center_x": 0.5, "center_y": 0.15}
+
+
 <Pag2>:
 	id:pag2
 	name:"pag2"
@@ -124,32 +124,56 @@ WindowManager:
 #------------------------------------------------------------------
 		MDBottomNavigation:
 			#colors
-    		text_color_active: utils.get_color_from_hex('##0d6efd')
+    		text_color_active: utils.get_color_from_hex('#0d6efd')
+		
 			MDBottomNavigationItem:
+				id: screen1
 				name: "screen1"
 				text: "Form"
 				icon: "receipt"
 				orientation: "vertical"
 
-				MDTextField:
+
+
+				MDLabel:
+					text: "[color=#0d6efd]Carricatori: [/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					markup: True
+					halign: "center"
+					font_size: '20sp'
+					pos_hint: {"center_x": 0.27, "center_y": 0.92}
+				MDLabel:
+					id: carricatori
+					text: "[color=#FFFFFF]----[/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					markup: True
+					halign: "center"
+					font_size: '20sp'
+					pos_hint: {"center_x": 0.515, "center_y": 0.92}
+
+
+
+				MDLabel:
+					text: "[color=#0d6efd]EQ: [/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					markup: True
+					halign: "center"
+					font_size: '20sp'
+					pos_hint: {"center_x": 0.67, "center_y": 0.92}
+				MDLabel:
 					id: eq_id
-					write_tab: False
-					hint_text: "EQ          "
-					mode:"rectangle"
-					multiline: False
+					text: "[color=#FFFFFF]----[/color]"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					markup: True
+					halign: "center"
+					font_size: '20sp'
+					pos_hint: {"center_x": 0.800, "center_y": 0.92}
 
-					color_mode: 'custom'
-    				line_color_focus: utils.get_color_from_hex('##0d6efd')
 
-					icon_right: "account-circle"
 
-					size_hint: (.7, None)
-					
-					max_height: '100sp'
-					
-					icon_right_color: utils.get_color_from_hex('#FFFFFF')
 
-					pos_hint: {"center_x": 0.5, "center_y": 0.92}
+
+
 				MDTextField:
 					id: buono_id
 					write_tab: False
@@ -232,7 +256,7 @@ WindowManager:
 					write_tab: False
 					hint_text: "Note         "
 					mode:"rectangle"
-					multiline: True
+					multiline: False
 
 					color_mode: 'custom'
     				line_color_focus: utils.get_color_from_hex('##0d6efd')
@@ -241,11 +265,29 @@ WindowManager:
 
 					size_hint: (.7, None)
 					
-					max_height: '100sp'
 					
 					icon_right_color: utils.get_color_from_hex('#FFFFFF')
 
-					pos_hint: {"center_x": 0.5, "center_y": 0.38}
+					pos_hint: {"center_x": 0.5, "center_y": 0.435}
+				MDTextField:
+					id: targa_id
+					write_tab: False
+					hint_text: "Targa         "
+					mode:"rectangle"
+					multiline: False
+
+					color_mode: 'custom'
+    				line_color_focus: utils.get_color_from_hex('##0d6efd')
+
+					icon_right: "car"
+
+					size_hint: (.7, None)
+					
+					
+					icon_right_color: utils.get_color_from_hex('#FFFFFF')
+
+					pos_hint: {"center_x": 0.5, "center_y": 0.325}
+
 				MDLabel:
 					id: error_label_infos
 					markup: True
@@ -257,16 +299,27 @@ WindowManager:
 					pos_hint: {"center_x": 0.5, "center_y": 0.235}
 				MDIconButton:
 					id: api_send_infos
-					icon: "file-plus"
-					pos_hint: {"center_x": .5, "center_y": 0.15}
-					user_font_size: '40dp'
+					icon: "images/send_image.png"
+					pos_hint: {"center_x": .7, "center_y": 0.14}
 					on_press: root.api_request()
+					icon_size: "150sp"
 				MDLabel:
 					text: "Invia Form"
 					font_name: 'data/font/RussoOne-Regular.ttf'
 					halign: "center"
 					font_size: '10sp'
-					pos_hint: {"center_x": 0.5, "center_y": 0.10}
+					pos_hint: {"center_x": 0.7, "center_y": 0.04}
+				MDIconButton:
+					icon: "images/command_button.png"
+					pos_hint: {"center_x": .3, "center_y": 0.14}
+					on_press: root.back_page_command()
+					icon_size: "150sp"
+				MDLabel:
+					text: "Giri"
+					font_name: 'data/font/RussoOne-Regular.ttf'
+					halign: "center"
+					font_size: '10sp'
+					pos_hint: {"center_x": 0.3, "center_y": 0.04}
 #-------------------------------------------------------------------------
 
 			MDBottomNavigationItem:
@@ -375,11 +428,50 @@ WindowManager:
 
 				MDRectangleFlatButton:
 					text: "Log Out"
-					line_color: utils.get_color_from_hex('##0d6efd')
+					line_color: utils.get_color_from_hex('#0d6efd')
 					on_press: root.log_out()
 					pos_hint: {"center_x": 0.5, "center_y": 0.15}
+
 
 <Pag3>:
 	id:pag3
 	name:"pag3"
 
+
+	ScrollView:
+
+		MDList:
+			id: container
+
+	BoxLayout:
+		orientation: "vertical"
+		MDLabel:
+			id: welcome_orders
+			markup: True
+			text: ""
+			font_name: 'data/font/Abel-Regular.ttf'
+			size_hint_y: None
+			padding_y: '50dp'
+			font_size: '30sp'
+			halign: "center"
+			pos_hint: {"center_x": .5, "center_y": 0.2}
+		MDLabel:
+			text: ""
+			size_hint_y: None
+			padding_y: '20dp'
+			font_size: '30sp'
+			halign: "center"
+			pos_hint: {"center_x": .5, "center_y": 0.01}
+		MDIconButton:
+			id: api_send_infos
+			icon: "images/back_button.png"
+			pos_hint: {"center_x": .5, "center_y": 0.2}
+			on_press: root.back_button_command_list()
+			icon_size: "150sp"
+		MDLabel:
+			text: ""
+			size_hint_y: None
+			padding_y: '20dp'
+			font_size: '25sp'
+			halign: "center"
+			pos_hint: {"center_x": .5, "center_y": 0.01}
