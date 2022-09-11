@@ -143,34 +143,34 @@ class Pag2(Screen):
 			# Verification step
 			verification_step = c.fetchone()
 
-			if verification_step[2] == '3': # TORINO
+			if verification_step[2] == '3': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-3[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-3[/color]"
-			elif verification_step[2] == '4': # VERONA
+			elif verification_step[2] == '4': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-4[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-4[/color]"
-			elif verification_step[2] == '5': # GORGONZOLA
+			elif verification_step[2] == '5': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-5[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-5[/color]"
-			elif verification_step[2] == '6': # VENEZIA
+			elif verification_step[2] == '6': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-6[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-6[/color]"
-			elif verification_step[2] == '7': # RAVENA
+			elif verification_step[2] == '7': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-7[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-7[/color]"
-			elif verification_step[2] == '8': # BOLOGNA
+			elif verification_step[2] == '8':
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-8[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-8[/color]"
-			elif verification_step[2] == '9': # RIMINI
+			elif verification_step[2] == '9': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-9[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-9[/color]"
-			elif verification_step[2] == '10': # PESCARA
+			elif verification_step[2] == '10': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-10[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-10[/color]"
-			elif verification_step[2] == '11': # PRATO
+			elif verification_step[2] == '11': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-11[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-11[/color]"
-			elif verification_step[2] == '12': # PISA
+			elif verification_step[2] == '12': 
 				self.ids.mdtool.title = "[color=FFFFFF]Modulo Preposti[/color] - [color=#0d6efd]Depozit-12[/color]"
 				self.ids.deposit_id_profilo.text = "[color=#0d6efd]Depozit-12[/color]"
 			# conn.commit()
