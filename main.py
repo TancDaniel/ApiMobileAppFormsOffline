@@ -410,9 +410,75 @@ class Pag2(Screen):
 		self.manager.transition.direction="left"
 
 
+		
+
+class TwoLineListItem(TwoLineAvatarIconListItem):
+    '''Custom list item.'''
+
+    icon = StringProperty("android")
 
 class Pag3(Screen):
-	pass
+	def timing_for_ui(self,eq,carricatori,idx,non_x):
+		global idx_command
+		Clock.schedule_once(self.next_page_command, 0.7)
+		self.manager.get_screen("pag2").ids.eq_id.text = str(eq)
+		self.manager.get_screen("pag2").ids.carricatori.text = str(carricatori)
+		idx_command = int(idx)
+	def back_button_command_list(self,*args):
+		Clock.schedule_once(self.next_page_command, 0.7)
+
+	def next_page_command(self,*args):
+		self.manager.current = 'pag2'
+		self.manager.transition.direction="left"
+		self.ids.container.clear_widgets()
+
+	def timing_for_ui2(self,eq,carricatori,non_x):
+		Clock.schedule_once(self.next_page_command, 0.7)
+		self.manager.get_screen("pag2").ids.eq_id.text = str(eq)
+		self.manager.get_screen("pag2").ids.carricatori.text = str(carricatori)
+
+	def on_pre_enter(self, *args):
+		user_id = self.manager.get_screen("pag1").ids.user.text # THIS IS HOW YOU TAKE INFOS FROM ANOTHER CLASSS!!!!!!!!!
+		self.ids.welcome_orders.text = f"[color=#FFFF]{user_id.split('@')[0].capitalize()}[/color]"
+		try:
+			BASE ="127.0.0.1:5000"
+			response = requests.get(BASE + f"/PATH_to_api/{user_id.split('@')[0]}/")
+			x = response.json()
+			conn = sqlite3.connect("modulo_app.db")
+			if x == []:
+				self.ids.container.add_widget(Label(text="[color=#0d6efd]Nes[/color]sun giri", font_name='data/font/RussoOne-Regular.ttf', markup=True,halign= "center",font_size= '25sp'))
+			else:
+			#------------------------------------DB
+				c = conn.cursor()
+				c.execute('DELETE FROM Command_Lists;',)
+				for i in x:
+					self.ids.container.add_widget(TwoLineListItem(text=f"EQ: {i['eq']}", secondary_text=f"Carricatori {i['carricatori']}", icon="images/box_id2.png", on_press=partial(self.timing_for_ui, i['eq'], i['carricatori'], i['id'])))
+
+					#--------------------------------------------VERIFICARE
+					c.execute("INSERT INTO Command_Lists VALUES (:eq, :carricatori, :status, :id_command)", {"eq":i['eq'], "carricatori":i['carricatori'], "status":0, "id_command":i['id']})
+					conn.commit()
+			conn.close()
+
+
+		except Exception as e:
+			#--------------------------------------------VERIFICARE
+			# c.execute("UPDATE login_user_cookie SET sent_forms =?", (forms_number_id,))
+			#--------------------------------------------VERIFICARE
+			conn = sqlite3.connect("modulo_app.db")
+			#------------------------------------DB
+			c = conn.cursor()
+			c.execute("SELECT * FROM Command_Lists WHERE status=:status", {"status": 0})
+			# Verification step
+			verification_step = c.fetchall()
+			if verification_step == []:
+				self.ids.container.add_widget(Label(text="[color=#0d6efd]Nes[/color]sun giri", font_name='data/font/RussoOne-Regular.ttf', markup=True,halign= "center",font_size= '25sp'))
+			else:
+				inx = 0
+				for i in range(len(verification_step)):
+					self.ids.container.add_widget(TwoLineListItem(text=f"EQ: {verification_step[inx][0]}", secondary_text=f"Carricatori {verification_step[inx][1]}", icon="images/box_id2.png", on_press=partial(self.timing_for_ui2, verification_step[inx][0], verification_step[inx][1])))
+					inx +=1
+
+			conn.close()
 class WindowManager(ScreenManager):
     pass
 
