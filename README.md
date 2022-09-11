@@ -6,8 +6,9 @@ Login with password encryption and "cookie" for last entered!.
 Update:
 Through api takes the last commands and we have like a command list. If you press on one command it will go to the next page. The form page and it will take some infos from commands automatically and in the end when the entire input forms are ready you can send them. The app works both online and offline.
 
-![WhatsAp![WhatsApp Image 2022-09-11 at 16 28 23 (1)](https://user-images.githubusercontent.com/100964349/189541632-b01d7b77-9151-415b-89f8-d0ad240072e4.jpeg)
-p Image 2022-09-11 at 16 28 23](https://user-images.githubusercontent.com/100964349/189541621-c3cef025-0be9-4f4c-9210-ea70f5d08cfe.jpeg)
+
+![xxxxxx](https://user-images.githubusercontent.com/100964349/189542169-6f5fcb65-dc71-4a6a-bdee-6348fcb278e6.png)
+![xxxxxx](https://user-images.githubusercontent.com/100964349/189542090-7a1a23a4-6d36-4832-936f-1c44e90f15aa.png)
 [database](https://user-images.githubusercontent.com/100964349/181574813-93a3eba5-6712-4e25-bcbe-dff1e1071650.png)
 ![form](https://user-images.githubusercontent.com/100964349/181574864-e9b02083-730f-4f8a-938e-5a674f6c9732.png)
 ![stats_profile](https://user-images.githubusercontent.com/100964349/181574901-4a66f878-e079-49bf-9a0b-a30e91eb63d2.png)
