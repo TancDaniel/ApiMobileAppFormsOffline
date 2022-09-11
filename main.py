@@ -225,7 +225,7 @@ class Pag2(Screen):
 					BASE ="http://127.0.0.1:5000/"
 					response = requests.get(BASE + "example1/0/")
 					last_id = response.json()
-
+					response = requests.patch(BASE + f"/PATH_to_api/{user_id.split('@')[0]}/", {'id':idx_command})
 					self.connection_data_send_try()
 
 					data_base = [
@@ -344,6 +344,9 @@ class Pag2(Screen):
 					# -----------------PUT
 					response = requests.put(BASE + f"example1/{last_id['id']+1}", data_base[0])
 					response_dict = response.json()
+					verification_step = c.fetchall()
+					requests.patch(BASE + f"/PATH_to_api/{user_id.split('@')[0]}/", {'id':verification_step[indx_offline][3]})
+					indx_offline += 1
 					self.connection_data_send_try()
 					self.ids.forms_number_profilo.text = f"Moduli non inviati: 0"
 
