@@ -13,12 +13,17 @@ from kivy.core.window import Window
 # NEW LIBRARIES FOR BUILDOZER
 import requests
 import bcrypt
+import datetime
 ############################
 
+def clock_now():
+	clock_now = datetime.datetime.utcnow()+datetime.timedelta(hours=3)
+	clock_now_return = clock_now.strftime("%d-%m-%Y %H:%M:%S")
+	return clock_now_return
 
 forms_number_id = 0
 log_out_id = 0
-
+idx_command = 0
 
 class Pag1(Screen):
 	def on_pre_enter(self,*args):
