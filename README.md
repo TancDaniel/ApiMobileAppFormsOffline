@@ -1,7 +1,7 @@
 # ApiMobileAppFormsOffline
 My first mobile application that i made for a client.From beginning to end, just by me, of course this is a demo not the app itself.
 Mobile application for sending offline forms to an online database.
-Application to send forms online and offline - when there is no internet, the form is saved in the database and it is tried to send it and connect to the internet every 10 seconds. 
+Application to send forms online and offline - when there is no internet, the form is saved in the database and try to send the forms and connect to the internet every 10 seconds. 
 Login with password encryption and "cookie" for last entered!.
 Update:
 Through api takes the last commands and we have like a command list. If you press on one command it will go to the next page. The form page and it will take some infos from commands automatically and in the end when the entire input forms are ready you can send them. The app works both online and offline.
